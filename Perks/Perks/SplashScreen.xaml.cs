@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Device.Location;
-using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
 using Newtonsoft.Json.Linq;
 using Windows.Devices.Geolocation;
 
@@ -230,6 +225,7 @@ namespace Perks
                     venueAds.message = "Only those who dare... truly live";
                     venueAds.address = "Only those who dare... truly live";
                     venueAds.imageVenue = "Images/ads-ferrari.jpg";
+                    venueAds.canonicalUrl = "http://www.ferrari.com/English/Pages/home.aspx";
 
                     venueAds.imageType = "ads";
 

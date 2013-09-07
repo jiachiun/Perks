@@ -1,28 +1,16 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Device.Location;
-using System.Diagnostics;
-using System.IO.IsolatedStorage;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Threading;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
-using Perks.Resources;
 using Nokia.Phone.HereLaunchers;
-
-using Windows.Devices.Geolocation;
-using Newtonsoft.Json.Linq;
 
 namespace Perks
 {
@@ -416,8 +404,8 @@ namespace Perks
             ShareStatusTask shareStatusTask = new ShareStatusTask();
 
 
-            
-            shareStatusTask.Status = String.Format("Check out this perk: {0}. More at", Helper.venues[_currentVenueControlId].message);
+
+            shareStatusTask.Status = String.Format("Check out this perk: {0}. More at {1}", Helper.venues[_currentVenueControlId].message, Helper.venues[_currentVenueControlId].canonicalUrl);
 
             shareStatusTask.Show();
         }
