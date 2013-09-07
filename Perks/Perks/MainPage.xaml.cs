@@ -262,9 +262,6 @@ namespace Perks
                 if (delta < STEP_VALUE)
                     STEP_VALUE = delta;
 
-                //Debug.WriteLine("Current offset: " + _currentOffset);
-                //Debug.WriteLine("Final offset: " + _finalOffset);
-
                 if ((int)_finalOffset > (int)_currentOffset)
                     _currentOffset += STEP_VALUE;
                 else if ((int)_finalOffset < (int)_currentOffset)
@@ -308,12 +305,6 @@ namespace Perks
 
             if (tempVenueControlId != _currentVenueControlId)
                 OnVenueControlSelectionChanged(_currentVenueControlId);
-
-            //_currentMedicineControlId = getCurrentMedicineControlId((double)e.NewValue);
-            //Debug.WriteLine("Current Medicine Control ID: " + _currentMedicineControlId);
-
-            //DimMedicineControls();
-            //((SmallMedicineControl)_stackPanelSmallMedicines.Children[_currentMedicineControlId]).lightUpControl();
 
         }
 
@@ -367,126 +358,6 @@ namespace Perks
             }
         }
 
-        //private async void loadVenues()
-        //{
-
-        //    WebClient webClient = new WebClient();
-
-        //    webClient.DownloadStringCompleted += webClient_DownloadStringCompleted;
-
-
-        //    string url = "https://api.foursquare.com/v2/";
-        //    url += String.Format("specials/search?ll={0},{1}", Helper.longitude, Helper.latitude); // Specials Explore
-        //    url += "&oauth_token=BZNDEQTA5GYGZHLMDRKO43IQZEW4THCFCNKYB2PHBIC2ALEZ&v=20130903";  // OAuth Token
-
-        //    webClient.DownloadStringAsync(new Uri(url));
-        //    loadingBar.Visibility = Visibility.Visible;
-        //}
-
-
-
-
-        //async void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        //{
-        //    Helper.venues = new List<Venue>();
-
-        //    var root = JObject.Parse(e.Result);
-        //    var items = root["response"]["specials"]["items"];
-
-        //    //MessageBox.Show(String.Format("name: {0}", firstGroup["venue"]["name"]));
-
-        //    // clear list
-        //    Helper.venues.Clear();
-        //    stackPanelVenues.Children.Clear();
-
-        //    int i = 0;
-
-        //    foreach(var item in items)
-        //    {
-        //        Venue venue = new Venue();
-
-        //        venue.index = i;
-        //        venue.id = item["venue"]["id"].ToString();
-        //        venue.name = item["venue"]["name"].ToString();
-
-        //        venue.imageType = item["icon"].ToString();
-
-        //        // location
-        //        venue.address = item["venue"]["location"]["address"].ToString();
-        //        venue.longitude = item["venue"]["location"]["lng"].ToString();
-        //        venue.lattitude = item["venue"]["location"]["lat"].ToString();
-
-        //        var sCoord = new GeoCoordinate(Double.Parse(Helper.latitude), Double.Parse(Helper.longitude));
-        //        var eCoord = new GeoCoordinate(Double.Parse(venue.lattitude), Double.Parse(venue.longitude));
-        //        venue.distance = sCoord.GetDistanceTo(eCoord).ToString();
-
-
-
-        //        venue.imageVenue = "";
-        //        //venue.imageVenue = getImage(venue.id);
-
-
-
-        //        // specials
-        //        venue.message = item["message"].ToString();
-        //        venue.description = item["description"].ToString();
-
-        //        if(item["finePrint"] != null)
-        //            venue.fineprint = item["finePrint"].ToString();
-
-        //        // stats
-        //        venue.checkinsCount = item["venue"]["stats"]["checkinsCount"].ToString();
-        //        venue.usersCount = item["venue"]["stats"]["usersCount"].ToString();
-
-
-        //        Helper.venues.Add(venue);
-        //        stackPanelVenues.Children.Add(new VenueControl(venue));
-
-        //        //Debug.WriteLine("Name: {0}", item["venue"]["name"]);
-        //    }
-
-
-        //    //foreach(var venue in venues)
-        //    //{
-        //    //    stackPanelVenues.Children.Add(new VenueControl(venue));
-        //    //}
-
-
-        //    InitializeAnimatedScrollViewer();
-        //    loadingBar.Visibility = Visibility.Collapsed;
-        //}
-
-
-        //async Task<string> getImage(string venueId)
-        //{
-        //    string result = "";
-
-        //    // get the image of the venue
-        //    WebClient webClientPhoto = new WebClient();
-        //    string url = "https://api.foursquare.com/v2/";
-        //    url += String.Format("venues/{0}/photos", venueId); // Get photo
-        //    url += "?oauth_token=BZNDEQTA5GYGZHLMDRKO43IQZEW4THCFCNKYB2PHBIC2ALEZ&v=20130903";  // OAuth Token
-
-
-        //    webClientPhoto.DownloadStringCompleted += delegate(object o, DownloadStringCompletedEventArgs e)
-        //    {
-        //        var rootVenue = JObject.Parse(e.Result);
-        //        var firstPhoto = rootVenue["response"]["photos"]["items"][0];
-
-        //        if (firstPhoto != null)
-        //            result = firstPhoto["prefix"].ToString() + "width300" + firstPhoto["suffix"].ToString();
-
-
-        //    };
-
-
-        //    //Extensions.DownloadStringTask(webClientPhoto, new Uri(url, UriKind.Absolute));
-        //    webClientPhoto.DownloadStringAsync(new Uri(url, UriKind.Absolute));
-
-
-        //    return result;
-
-        //}
 
         private void appBarBtnRefresh_Click(object sender, System.EventArgs e)
         {
@@ -500,6 +371,17 @@ namespace Perks
 
         private void appBarBtnInfo_Click(object sender, System.EventArgs e)
         {
+        }
+
+        private void appBarBtnShare_Click(object sender, System.EventArgs e)
+        {
+            ShareStatusTask shareStatusTask = new ShareStatusTask();
+
+
+            
+            shareStatusTask.Status = String.Format("Check out this perk: {0}. More at", Helper.venues[_currentVenueControlId].message);
+
+            shareStatusTask.Show();
         }
 
 

@@ -74,6 +74,10 @@ namespace Perks
                     ellipseType.Fill = new SolidColorBrush(Helper.ConvertStringToColor("#FFD14444"));
                     break;
 
+                case "ads":
+                    imgType.Source = new BitmapImage(new Uri("Images/flash.png", UriKind.Relative));
+                    ellipseType.Fill = new SolidColorBrush(Helper.ConvertStringToColor("#FFD14444"));                    break;
+
                 default:
                     imgType.Source = new BitmapImage(new Uri("Images/check-in.png", UriKind.Relative));
                     ellipseType.Fill = new SolidColorBrush(Helper.ConvertStringToColor("#FF7DDF00"));

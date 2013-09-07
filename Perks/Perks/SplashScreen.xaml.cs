@@ -194,7 +194,10 @@ namespace Perks
 
         }
 
-
+        public static bool isEven(int value)
+        {
+            return value % 2 == 0;
+        }
 
         async void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
@@ -210,8 +213,30 @@ namespace Perks
 
             int i = 0;
 
+            Random random = new Random();
+            int adIndex = random.Next(0, items.Count()-1 );
+
             foreach (var item in items)
             {
+                if(i == adIndex)
+                {
+                    // randomly add an ads for demo purposes
+                    Venue venueAds = new Venue();
+
+                    venueAds.index = i;
+
+                    venueAds.name = "[Ads] Ferrari";
+                    venueAds.description = "Only those who dare... truly live";
+                    venueAds.imageVenue = "Images/ads-ferrari.jpg"
+
+                    venueAds.imageType = "ads";
+
+                    Helper.venues.Add(venueAds);
+
+                    continue;
+                }
+               
+
                 Venue venue = new Venue();
 
                 venue.index = i;
