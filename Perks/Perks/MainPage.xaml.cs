@@ -23,30 +23,40 @@ namespace Perks
     public partial class MainPage : PhoneApplicationPage
     {
 
+
+
+
         // Constructor
         public MainPage()
         {
             InitializeComponent();
 
+            Helper.MainPage = this;
+
             btnDirections.Tap += BtnDirectionsOnTap;
+            btnWebsites.Tap += BtnWebsitesOnTap;
+
 
         }
 
+
+        private void BtnWebsitesOnTap(object sender, GestureEventArgs gestureEventArgs)
+        {
+
+        }
 
         private void BtnDirectionsOnTap(object sender, GestureEventArgs gestureEventArgs)
         {
 
         }
 
-
         private void appBarBtnRefresh_Click(object sender, System.EventArgs e)
         {
-
+            NavigationService.GoBack();
         }
 
         private void appBarMenuItemAbout_Click(object sender, System.EventArgs e)
         {
-
 
         }
 
