@@ -70,11 +70,7 @@
         <Image x:Name="imgAds" Grid.ColumnSpan="2" Margin="0,175,0,181" Grid.Row="1" Source="Images/ads-ferrari.jpg" Stretch="Fill" Height="345" Width="480"/>
         <Image Margin="0,501,0,0" Grid.Row="1" Source="Images/backgroundList.png" Stretch="Fill" Grid.ColumnSpan="2"/>
         <ScrollViewer x:Name="scrollViewerVenues" Margin="0,538,0,10" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.ColumnSpan="2" Width="480" Height="155">
-        	<StackPanel x:Name="stackPanelVenues" Orientation="Horizontal" Height="155" HorizontalAlignment="Left">
-        		<local:VenueControl Height="Auto" d:LayoutOverrides="Width"/>
-        		<local:VenueControl Height="Auto" d:LayoutOverrides="Width"/>
-        		<local:VenueControl Height="Auto" d:LayoutOverrides="Width"/>
-        	</StackPanel>
+        	<StackPanel x:Name="stackPanelVenues" Orientation="Horizontal" Height="155" HorizontalAlignment="Left"/>
         </ScrollViewer>
         <Grid x:Name="columnGuide" Margin="0,551,4,0" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.Row="1">
             <Rectangle Fill="#76000000" HorizontalAlignment="Left" Height="152" StrokeThickness="4" VerticalAlignment="Top" Width="159"/>

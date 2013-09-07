@@ -69,6 +69,37 @@ namespace Perks
         {
             Venue venue = Helper.venues[_currentVenueControlId];
 
+            // temp function to show ads control for demo purposes
+            if(venue.imageType == "ads")
+            {
+
+                imgAds.Visibility = Visibility.Visible;
+
+                TranslateTransform translateTransform = new TranslateTransform();
+                translateTransform.X = -130;
+                btnWebsites.RenderTransform = translateTransform;
+
+                txtName.Text = venue.name;
+
+                txtAddress.Text = venue.address;
+                txtMessage.Text = venue.message;
+
+                
+
+                BitmapImage bmp = new BitmapImage(new Uri(venue.imageVenue, UriKind.Relative));
+                imgAds.Source = bmp;
+                imgVenue.Source = bmp;
+                return;
+            }
+            else
+            {
+                imgAds.Visibility = Visibility.Collapsed;
+
+                TranslateTransform translateTransform = new TranslateTransform();
+                translateTransform.X = 0;
+                btnWebsites.RenderTransform = translateTransform;
+            }
+
             txtName.Text = venue.name;
 
             // location
@@ -367,11 +398,18 @@ namespace Perks
 
         private void appBarMenuItemAbout_Click(object sender, System.EventArgs e)
         {
+            // go to about pivot
+            //NavigationService.Navigate(new Uri("/AboutPage.xaml?goto=0", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/AboutPage2.xaml", UriKind.Relative));
+
         }
 
         private void appBarBtnInfo_Click(object sender, System.EventArgs e)
         {
+            // go to info pivot
+            NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
         }
+
 
         private void appBarBtnShare_Click(object sender, System.EventArgs e)
         {

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Threading;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Newtonsoft.Json.Linq;
@@ -34,8 +37,28 @@ namespace Perks
             txtName.Text = venue.name;
             txtMessage.Text = venue.message;
 
-            if (venue.imageVenue != "")
-                imgVenue.Source = new BitmapImage(new Uri(venue.imageVenue, UriKind.Absolute));
+
+            // temp function to show ads control for demo purposes
+            if(venue.imageType == "ads")
+            {
+                ellipseFeatured.Visibility = Visibility.Visible;
+
+
+
+
+                imgVenue.Source = new BitmapImage(new Uri(venue.imageVenue, UriKind.Relative));
+
+                imgType.Source = new BitmapImage(new Uri("Images/check-in.png", UriKind.Relative));
+                ellipseType.Fill = new SolidColorBrush(Helper.ConvertStringToColor("#FF7DDF00"));
+
+
+
+                return;
+            }
+
+            //arcFeatured.Visibility = Visibility.Collapsed;
+            //if (venue.imageVenue != "")
+            //    imgVenue.Source = new BitmapImage(new Uri(venue.imageVenue, UriKind.Absolute));
 
             switch (venue.imageType)
             {
@@ -75,7 +98,7 @@ namespace Perks
                     break;
 
                 case "ads":
-                    imgType.Source = new BitmapImage(new Uri("Images/flash.png", UriKind.Relative));
+                    imgType.Source = new BitmapImage(new Uri("Images/light-bulb.png", UriKind.Relative));
                     ellipseType.Fill = new SolidColorBrush(Helper.ConvertStringToColor("#FFD14444"));                    break;
 
                 default:
@@ -87,6 +110,8 @@ namespace Perks
 
             getImage(venue.id);
         }
+
+
 
         void getImage(string venueId)
         {

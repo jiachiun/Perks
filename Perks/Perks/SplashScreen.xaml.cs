@@ -213,9 +213,10 @@ namespace Perks
 
             int i = 0;
 
-            Random random = new Random();
-            int adIndex = random.Next(0, items.Count()-1 );
-
+            //Random random = new Random();
+            //int adIndex = random.Next(0, items.Count()-1 );
+            int adIndex = items.Count() - 3;    // temporary, for demo purposes. This will cause error when items are less than 4
+            
             foreach (var item in items)
             {
                 if(i == adIndex)
@@ -226,12 +227,15 @@ namespace Perks
                     venueAds.index = i;
 
                     venueAds.name = "[Ads] Ferrari";
-                    venueAds.description = "Only those who dare... truly live";
-                    venueAds.imageVenue = "Images/ads-ferrari.jpg"
+                    venueAds.message = "Only those who dare... truly live";
+                    venueAds.address = "Only those who dare... truly live";
+                    venueAds.imageVenue = "Images/ads-ferrari.jpg";
 
                     venueAds.imageType = "ads";
 
                     Helper.venues.Add(venueAds);
+
+                    i++; 
 
                     continue;
                 }
@@ -270,12 +274,16 @@ namespace Perks
 
 
                 Helper.venues.Add(venue);
+
+                i++;
             }
 
 
             // stop loading bar
             loadingBar.Visibility = Visibility.Collapsed;
             loadingBar.IsIndeterminate = false;
+
+
         }
 
         public double getDistance(GeoCoordinate p1, GeoCoordinate p2)

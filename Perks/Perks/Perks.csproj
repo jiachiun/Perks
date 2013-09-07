@@ -91,6 +91,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AboutPage2.xaml.cs">
+      <DependentUpon>AboutPage2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -118,6 +124,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="AboutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AboutPage2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -161,17 +175,22 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\ads-att-3.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\ads_at&amp;t.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Images\check-in.png" />
     <Content Include="Images\default.png" />
+    <Content Include="Images\flash.png" />
+    <Content Include="Images\frequency.png" />
+    <Content Include="Images\friends.png" />
+    <Content Include="Images\inspiration.png" />
+    <Content Include="Images\mayor.png" />
+    <Content Include="Images\newbie.png" />
     <Content Include="Images\perks_logo.png" />
+    <Content Include="Images\swarm.png" />
     <Content Include="Images\testBlur.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="perks_tile_159.png" />
+    <Content Include="perks_tile_336.png" />
+    <Content Include="perks_tile_691.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
@@ -183,6 +202,7 @@
     <Reference Include="HereLauncher">
       <HintPath>..\..\..\..\..\Desktop\Work\ICON App\Sample Code\HereLaunchersAPIDemo_v1_0\FullDemo\HereLauncherLib\Release\HereLauncher.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Drawing" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -197,9 +217,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\ads-ferrari.jpg" />
-    <Resource Include="Images\ads-revamped.jpg" />
-    <Resource Include="Images\at15-15.jpg" />
     <Resource Include="Images\backgroundList.png" />
+    <Resource Include="Images\light-bulb.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
