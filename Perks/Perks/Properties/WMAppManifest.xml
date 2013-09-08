@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{dddaa7bb-1aa9-4dbc-ac99-fa002cb9d467}" Title="Perks" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Perks author" Description="Sample description" Publisher="Perks" PublisherID="{66be26bb-9bf4-4366-8b6c-87b81d1fac9d}">
+  <App xmlns="" ProductID="{dddaa7bb-1aa9-4dbc-ac99-fa002cb9d467}" Title="Perks" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Perks author" Description="Sometimes you just want to take a glance at the special deals around you without disrupting your work. Perks is here for you.&#xD;&#xA;&#xD;&#xA;Perks makes it easy and interesting for you to discover exclusive perks in town. Stay updated to the latest goods and enjoy the" Publisher="Perks" PublisherID="{66be26bb-9bf4-4366-8b6c-87b81d1fac9d}">
     <IconPath IsRelative="true" IsResource="false">perks_tile_159.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

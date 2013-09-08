@@ -199,7 +199,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="HereLauncher">
+    <Reference Include="HereLauncher, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Desktop\Work\ICON App\Sample Code\HereLaunchersAPIDemo_v1_0\FullDemo\HereLauncherLib\Release\HereLauncher.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Drawing" />

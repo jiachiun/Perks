@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Device.Location;
+using System.IO;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -401,15 +403,36 @@ namespace Perks
 
         private void appBarBtnShare_Click(object sender, System.EventArgs e)
         {
-            ShareStatusTask shareStatusTask = new ShareStatusTask();
 
+            string longUrl = Helper.venues[_currentVenueControlId].canonicalUrl;
+            string url = string.Format(@"http://api.bit.ly/v3/shorten?login={0}&apiKey={1}&longUrl={2}&format=txt", "o_7c1i6hsafe", "R_c4e9455c739d9d3bfe7abba51e3da2bf", HttpUtility.UrlEncode(longUrl));
 
+            loadingBar.IsIndeterminate = true;
+            loadingBar.Visibility = Visibility.Visible;
+            
+            
+            WebClient wc = new WebClient();
+            wc.OpenReadCompleted += new OpenReadCompletedEventHandler(wc_OpenReadCompleted);
+            wc.OpenReadAsync(new Uri(url));
 
-            shareStatusTask.Status = String.Format("Check out this perk: {0}. More at {1}", Helper.venues[_currentVenueControlId].message, Helper.venues[_currentVenueControlId].canonicalUrl);
-
-            shareStatusTask.Show();
         }
 
+        void wc_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e)
+        {
+            Stream stream = e.Result;
+            var reader = new StreamReader(stream);
+            var shortenedUrl = reader.ReadToEnd();
+
+
+            loadingBar.Visibility = Visibility.Collapsed;
+
+            ShareStatusTask shareStatusTask = new ShareStatusTask();
+
+            shareStatusTask.Status = String.Format("Check out this perk: {0}. More at {1}", Helper.venues[_currentVenueControlId].message, shortenedUrl);
+
+            shareStatusTask.Show();
+
+        }
 
 
     }
