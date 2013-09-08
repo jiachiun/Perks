@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Device.Location;
+using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -90,24 +91,24 @@ namespace Perks
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             // if user has not opted in or out of location
-            //if (!IsolatedStorageSettings.ApplicationSettings.Contains("LocationConsent"))
-            //{
-            //    MessageBoxResult result =
-            //        MessageBox.Show("This app accesses your phone's location. Is that ok?",
-            //        "Location",
-            //        MessageBoxButton.OKCancel);
+            if (!IsolatedStorageSettings.ApplicationSettings.Contains("LocationConsent"))
+            {
+                MessageBoxResult result =
+                    MessageBox.Show("This app accesses your phone's location. Is that ok?",
+                    "Location",
+                    MessageBoxButton.OKCancel);
 
-            //    if (result == MessageBoxResult.OK)
-            //    {
-            //        IsolatedStorageSettings.ApplicationSettings["LocationConsent"] = true;
-            //    }
-            //    else
-            //    {
-            //        IsolatedStorageSettings.ApplicationSettings["LocationConsent"] = false;
-            //    }
+                if (result == MessageBoxResult.OK)
+                {
+                    IsolatedStorageSettings.ApplicationSettings["LocationConsent"] = true;
+                }
+                else
+                {
+                    IsolatedStorageSettings.ApplicationSettings["LocationConsent"] = false;
+                }
 
-            //    IsolatedStorageSettings.ApplicationSettings.Save();
-            //}
+                IsolatedStorageSettings.ApplicationSettings.Save();
+            }
 
             if (Helper.isRefreshing)
             {
@@ -134,13 +135,13 @@ namespace Perks
 
         private async Task getCoordinates()
         {
-            //loadingBar.Visibility = Visibility.Visible;
+            loadingBar.Visibility = Visibility.Visible;
 
-            //if ((bool)IsolatedStorageSettings.ApplicationSettings["LocationConsent"] != true)
-            //{
-            //    // The user has opted out of Location.
-            //    return;
-            //}
+            if ((bool)IsolatedStorageSettings.ApplicationSettings["LocationConsent"] != true)
+            {
+                // The user has opted out of Location.
+                return;
+            }
 
             Geolocator geolocator = new Geolocator();
             geolocator.DesiredAccuracyInMeters = 50;
@@ -214,7 +215,7 @@ namespace Perks
             
             foreach (var item in items)
             {
-                if(i == adIndex)
+                if(adIndex >=2 && i == adIndex)
                 {
                     // randomly add an ads for demo purposes
                     Venue venueAds = new Venue();
